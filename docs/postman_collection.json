@@ -1,0 +1,120 @@
+{
+  "info": {
+    "name": "be-test-logkar API",
+    "_postman_id": "be-test-logkar-collection",
+    "description": "Postman collection for the be-test-logkar backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"alice@example.com\",\n  \"name\": \"Alice\"\n}"
+            },
+            "url": "{{baseUrl}}/users/"
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/users/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Keripik Pangsit\",\n  \"type\": \"Keripik Pangsit\",\n  \"flavor\": \"Original\",\n  \"size\": \"Medium\",\n  \"price\": 25000,\n  \"quantity\": 40\n}"
+            },
+            "url": "{{baseUrl}}/products/"
+          }
+        },
+        {
+          "name": "List Products",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/products/" }
+        },
+        {
+          "name": "Get Product",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/products/:id" }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Customer A\"\n}" },
+            "url": "{{baseUrl}}/customers/"
+          }
+        },
+        {
+          "name": "Get Customer",
+          "request": { "method": "GET", "header": [], "url": "{{baseUrl}}/customers/:id" }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Purchase",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": 1,\n  \"product_id\": 1,\n  \"size\": \"Medium\",\n  \"flavor\": \"Original\",\n  \"quantity\": 1,\n  \"unit_price\": 25000\n}"
+            },
+            "url": "{{baseUrl}}/transactions/purchase"
+          }
+        },
+        {
+          "name": "Redeem",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"customer_id\": 1,\n  \"size\": \"Small\"\n}" },
+            "url": "{{baseUrl}}/transactions/redeem"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
